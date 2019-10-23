@@ -48,6 +48,13 @@ class Player(pygame.sprite.Sprite):
         
         #Velocidade da nave
         self.speedx = 0
+
+        screen.fill(BLACK)
+        screen.blit(background, background_rect)
+        all_sprites.draw(screen)
+
+        #Depois de desenhar tudo, inverte o display
+        pygame.display.flip()
     #Metodo que atualiza a posição da navinha
     def update(self):
         self.rect.x += self.speedx
