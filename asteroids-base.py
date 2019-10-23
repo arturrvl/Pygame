@@ -6,7 +6,7 @@ from os import path
 
 # Estabelece a pasta que contem as figuras.
 img_dir = path.join(path.dirname(__file__), 'img')
-
+snd_dir = path.join(path.dirname(__file__), 'snd')
 # Dados gerais do jogo.
 WIDTH = 480 # Largura da tela
 HEIGHT = 600 # Altura da tela
@@ -49,12 +49,11 @@ class Player(pygame.sprite.Sprite):
         #Velocidade da nave
         self.speedx = 0
 
-        screen.fill(BLACK)
-        screen.blit(background, background_rect)
-        all_sprites.draw(screen)
+       
 
         #Depois de desenhar tudo, inverte o display
         pygame.display.flip()
+        
     #Metodo que atualiza a posição da navinha
     def update(self):
         self.rect.x += self.speedx
@@ -63,8 +62,7 @@ class Player(pygame.sprite.Sprite):
         if self.rect.right > WIDTH:
             self.rect.right = WIDTH
         if self.rect.left < 0:
-            self.rect.left = 0
-            
+            self.rect.left = 0     
 #Carregando todos os assets uma vez só.
 def load_assets(img_dir, snd_dir):
     assets ={}
@@ -72,7 +70,7 @@ def load_assets(img_dir, snd_dir):
     assets["mob_img"] = pygame.image.load(path.join(img_dir, "meteorBrown_med1.png")).convert()
     assets["bullet_img"] = pygame.image.load(path.join(img_dir, "laserRed16.png")).convert()
     assets["background"] = pygame.image.load(path.join(img_dir, "starfield.png")).convert()
-    assets["boom_sound"] = pygame.mixer.Sound(path.join(snd_dir, "exl13.wav"))
+    assets["boom_sound"] = pygame.mixer.Sound(path.join(snd_dir, "expl3.wav"))
     assets["destroy_sound"] = pygame.mixer.Sound(path.join(snd_dir, "expl6.wav"))
     assets["pew_sound"] = pygame.mixer.Sound(path.join(snd_dir, "pew.wav"))
         
